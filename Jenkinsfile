@@ -17,7 +17,7 @@ pipeline {
 
                     // Navigate to the app directory and install production dependencies
                     sh """
-                    cd /var/www/html/myapp  // Ensure this path is correct
+                    cd /var/www/html/nodejs-demo  // Ensure this path is correct
                     npm install --production
                     pm2 restart myapp || pm2 start server.js --name "myapp"
                     """
