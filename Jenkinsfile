@@ -11,7 +11,7 @@ pipeline {
                 script {
                     // Navigate to the app directory and install production dependencies
                     sh """
-                    cd /var/www/myapp
+                    cd ../var/www/html/myapp
                     npm install --production
                     pm2 restart myapp || pm2 start server.js --name "myapp"
                     """
