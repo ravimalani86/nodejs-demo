@@ -6,30 +6,12 @@ pipeline {
     }
 
     stages {
-        stage('Install Dependencies') {
-            steps {
-                script {
-                    // Install npm dependencies
-                    sh 'npm install'
-                }
-            }
-        }
-
-        stage('Build') {
-            steps {
-                script {
-                    // Build the project if needed
-                    sh 'npm run build'
-                }
-            }
-        }
-
         stage('Deploy') {
             steps {
                 script {
                     // Navigate to the app directory and install production dependencies
                     sh """
-                    cd /var/www/html/myapp
+                    cd /var/www/myapp
                     npm install --production
                     pm2 restart myapp || pm2 start server.js --name "myapp"
                     """
