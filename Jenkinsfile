@@ -9,8 +9,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    // Echo "pwa"
-                    echo "pwa"
+                    // Print the current working directory
+                    sh 'pwd'
 
                     // Navigate to the app directory and install production dependencies
                     sh """
