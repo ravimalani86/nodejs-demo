@@ -9,16 +9,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    // Print the current working directory
-                    sh 'pwd'
-
-                    // List the contents of /var/www/html to verify the myapp directory
-                    sh 'ls -l /var/www/html'
-
                     // Navigate to the app directory and install production dependencies
                     sh """
-                    cd /var/www/html/nodejs-demo  // Ensure this path is correct
+                    node -v && pm2 -v
+                    cd /var/www/html/nodejs-demo
                     npm install --production
+                    pm2 describe myapp || echo "myapp not found"
                     pm2 restart myapp || pm2 start server.js --name "myapp"
                     """
                 }
