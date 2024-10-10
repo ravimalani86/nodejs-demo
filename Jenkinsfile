@@ -15,7 +15,7 @@ pipeline {
                     cd /var/www/html/nodejs-demo
                     npm install --production
                     pm2 describe myapp || echo "myapp not found"
-                    pm2 restart myapp || pm2 start server.js --name "myapp"
+                    pm2 restart myapp || pm2 start "node server.js" --name "myapp"
                     """
                 }
             }
